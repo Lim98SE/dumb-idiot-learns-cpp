@@ -1,3 +1,5 @@
+// NAME: rpg.cpp
+// TESTING: Random generation, boolean logic, user input and gameplay loops.
 #include <iostream>
 using namespace std;
 
