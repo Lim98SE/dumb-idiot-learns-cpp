@@ -1,0 +1,150 @@
+=== PYTHON ===
+
+fib=[1,1] # Fib list
+
+nums=10 # Amount of numbers
+
+for i in range(nums): # Loop through those
+    print(fib[len(fib)-1]) # Print the last object in the list
+    fib.append(fib[len(fib)-1]+fib[len(fib)-2]) # Append the last + nest to last
+    
+# Bit complex, but it works.
+
+=== C++ ===
+
+#include<iostream>
+using namespace std;
+
+// init junk
+
+int main(){
+    int a = 1; // A
+    int b = 1; // B
+    int r = a; // Result
+    int x = 0; // Loop Index
+    int loops = 10; // Loops
+    while (loops!=x){ // The loop itself
+        cout<<r<<"\n"; // Print R with a newline
+        r = a + b; // Result is A + B
+        b = a; // B is transferred to A
+        a = r; // A is then the result
+        x++; // Let's do it again
+    }
+}
+
+// very simple version
+
+=== C# ===
+
+using System;
+
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+        int a = 1; // A
+        int b = 1; // B
+        int r = a; // Result
+        int l = 10; // Loops
+        int i = 0; // Index
+        while (i!=l){ // While in the loop:
+            Console.WriteLine (r+" "); // Write R to the console with a blank space because the console is inconsistent here
+            r=a+b; // Result is now A + B
+            b=a; // B is now A
+            a=r; // A is now the result
+            i++; // Increment the loop
+        }
+    }
+}
+
+// I DID C# HELL YEAH
+
+=== JavaScript ===
+
+loops=10 // Number of loops
+a=1 // Inital number
+b=1 // Inital number
+fib=a // Inital number
+
+i=0 // Inital number
+
+while (i!=loops){ // While I is NOT loops
+    console.log(fib) // Send the fib variable to the console
+    fib=a+b  // Set fib to A+B
+    b=a // Set B to A
+    a=fib // Set A to Fib
+    i++ // Increment I
+}
+
+// Look ma, no syntax errors!
+
+=== Java ===
+
+class fibNumbers {
+    public static void main(String[] args) {
+        int a = 1; // A
+        int b = 1; // B
+        int r = a; // Result
+        int l = 10; // Loops
+        int i = 0; // Index
+        while (l!=i){ // While in the loop
+            System.out.println(r+" "); // Print R (with a space at the end just in case :)
+            r=a+b; // Result is updated to A + B
+            b=a; //  B is now A
+            a=r; // A is now R
+            i+=1; // Increment the loop
+        }
+    }
+}
+
+// MY FEARS HAVE BEEN CONQUERED
+
+=== Standard C ===
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+    int a = 1;
+    int b = 1;
+    int r = a;
+    int l = 10;
+    int i = 0;
+    while (i!=l){
+		printf("%d\n",r);
+        r=a+b;
+        b=a;
+        a=r;
+        i++;
+    }
+}
+
+=== 6502 Assembly ===
+
+.org $2000 ; place the program at $2000
+
+init:
+lda #$01 ; load acc with 1
+sta $0200 ; store it at $0200
+sta $0201 ; and at $0201
+
+loop: ; the loop
+lda $0200 ; load acc with the number at $0200
+adc $0201 ; add $0201 to the acc
+pha ; push the acc to the stack
+lda $0200 ; load acc with $0200
+sta $0201 ; store it at $0201
+pla ; pull acc off the stack
+sta $0200 ; store acc at $0200
+jmp loop ; complete the loop
+
+.org $FFFA ; set some variables
+.word init ; IRQ
+.word init ; start address (only important one in this program)
+.word init ; NMI/BRK
+
+=== C64 BASIC ===
+
+10 A = 1:B = 1:R = A:L=10
+20 FOR I=1 TO L:PRINT R:R=A+B:B=A
+30 A=R:NEXT I
