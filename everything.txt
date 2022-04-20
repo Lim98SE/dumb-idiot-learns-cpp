@@ -6,7 +6,7 @@ nums=10 # Amount of numbers
 
 for i in range(nums): # Loop through those
     print(fib[len(fib)-1]) # Print the last object in the list
-    fib.append(fib[len(fib)-1]+fib[len(fib)-2]) # Append the last + nest to last
+    fib.append(fib[len(fib)-1]+fib[len(fib)-2]) # Append the last + next to last
     
 # Bit complex, but it works.
 
@@ -104,18 +104,18 @@ class fibNumbers {
 // Online C compiler to run C program online
 #include <stdio.h>
 
-int main() {
-    int a = 1;
-    int b = 1;
-    int r = a;
-    int l = 10;
-    int i = 0;
-    while (i!=l){
-		printf("%d\n",r);
-        r=a+b;
-        b=a;
-        a=r;
-        i++;
+int main() { // Main function
+    int a = 1; // A
+    int b = 1; // B
+    int r = a; // Result
+    int l = 10; // Loops
+    int i = 0; // Index
+    while (i!=l){ // Loop
+		printf("%d\n",r); // Print Result (idk how this works lol)
+        r=a+b; // Result is A + B
+        b=a; // B is A
+        a=r; // A is Result
+        i++; // Increment Index
     }
 }
 
@@ -124,27 +124,50 @@ int main() {
 .org $2000 ; place the program at $2000
 
 init:
-lda #$01 ; load acc with 1
-sta $0200 ; store it at $0200
-sta $0201 ; and at $0201
-
-loop: ; the loop
-lda $0200 ; load acc with the number at $0200
-adc $0201 ; add $0201 to the acc
-pha ; push the acc to the stack
-lda $0200 ; load acc with $0200
-sta $0201 ; store it at $0201
-pla ; pull acc off the stack
-sta $0200 ; store acc at $0200
-jmp loop ; complete the loop
-
-.org $FFFA ; set some variables
+lda #$01   ; load acc with 1
+sta $0200  ; store it at $0200
+sta $0201  ; and at $0201
+           ;
+loop:      ; the loop
+lda $0200  ; load acc with the number at $0200
+adc $0201  ; add $0201 to the acc
+pha        ; push the acc to the stack
+lda $0200  ; load acc with $0200
+sta $0201  ; store it at $0201
+pla        ; pull acc off the stack
+sta $0200  ; store acc at $0200
+jmp loop   ; complete the loop
+           ;
+.org $FFFA ; set some "variables" (assembly doesn't have variables)
 .word init ; IRQ
 .word init ; start address (only important one in this program)
 .word init ; NMI/BRK
 
 === C64 BASIC ===
 
-10 A = 1:B = 1:R = A:L=10
-20 FOR I=1 TO L:PRINT R:R=A+B:B=A
-30 A=R:NEXT I
+10 A = 1:REM A
+20 B = 1:REM B
+30 R = A:REM RESULT
+40 L=10:REM LOOPS
+50 FOR I=1 TO L:REM LOOP
+60 PRINT R:REM PRINT RESULT
+60 R=A+B:REM RESULT IS A+B
+70 B=A:REM B IS A
+80 A=R:REM A IS RESULT
+90 NEXT I:REM COMPLETE LOOP
+
+
+=== LOLCODE ===
+HAI 1.2
+I HAS A a ITZ 1 BTW defines "a" variable
+I HAS A b ITZ 1 BTW defines "b" variable
+I HAS A result ITZ a BTW defines result
+I HAS A loops ITZ 10 BTW number of loops
+I HAS A index ITZ 0 BTW index
+IM IN YR LOOP UPPIN YR index TIL BOTH SAEM index AN loops BTW the loop
+VISIBLE result BTW send the result
+result R SUM OF a AN b BTW result is a + b
+b R a BTW B is now A (also bra lolllllllllllllllllllllllllllllll)
+a R result BTW a is now result
+IM OUTTA YR LOOP BTW end the legendary loop
+KTHXBYE BTW end the legendary program 
